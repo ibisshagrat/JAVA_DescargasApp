@@ -68,13 +68,11 @@ public class App {
 	}
 	
 	public static double calcularTiempoDescarga(Collection<IdentificableDescargable<?>> descargables, Conexion conexion) {
-		
 		return calcularTamanoTotal(descargables)/conexion.getVelocidad();
 		
 	}
 	
 	public static void ordenarIdentificable(Collection<IdentificableDescargable<?>> identificables) {
-	
 		Collections.sort((List<IdentificableDescargable<?>>) identificables, new Identificable.Compare());
 	}
 	

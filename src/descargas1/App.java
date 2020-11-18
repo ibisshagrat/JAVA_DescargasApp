@@ -78,7 +78,6 @@ public class App {
 		String mensajeSalida = "";
 		int minutos = 0;
 		int horas = 0;
-		int dias = 0;
 		if (segundos >= 60) {		//Se observa si hay minutos
 			minutos = (int) segundos/60;
 			segundos += -minutos*60;
