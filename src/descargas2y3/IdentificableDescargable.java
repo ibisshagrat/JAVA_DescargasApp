@@ -1,5 +1,5 @@
 package descargas2y3;
 
-public interface IdentificableDescargable<T> extends Identificable<T>, Descargable {
+public interface IdentificableDescargable<T, V> extends Identificable<T, V>, Descargable {
 
 }

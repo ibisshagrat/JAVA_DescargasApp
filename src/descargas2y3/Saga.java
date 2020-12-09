@@ -2,7 +2,7 @@ package descargas2y3;
 
 import java.util.Collection;
 
-final public class Saga extends Multimedia {
+final public class Saga extends ContenidoMultimedia {
 	
 	String tituloSaga;
 	Collection<Pelicula> peliculas;

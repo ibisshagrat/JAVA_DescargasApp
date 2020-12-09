@@ -6,7 +6,4 @@ public class ConexionRed implements Conexion {
 	public double getVelocidad() {
 		return 50;
 	}
-	
-	
-
 }

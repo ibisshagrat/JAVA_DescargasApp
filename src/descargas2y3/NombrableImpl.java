@@ -21,4 +21,8 @@ public abstract class NombrableImpl implements Nombrable {
 		public String getId() {
 			return nombre;
 		}
+		
+		public int compareTo(Nombrable persona) {
+			return nombre.compareTo(persona.getNombre());
+		}
 }

@@ -1,6 +1,6 @@
 package descargas2y3;
 
-final public class Libro implements IdentificableDescargable<String>, Book {
+final public class Libro extends ContenidoMultimedia/* implements IdentificableDescargable<String, Libro>, */ implements Book {
 	private String id;
 	private String titulo;
 	private double tamano;
@@ -43,4 +43,9 @@ final public class Libro implements IdentificableDescargable<String>, Book {
 		String texto = id + " - " + tamano + " b";
 		return texto;
 	}
+
+//	@Override
+//	public int compareTo(Libro arg0) {
+//		return getId().compareTo(arg0.getId());
+//	}
 }

@@ -1,13 +1,13 @@
 package descargas2y3;
 
-public class Fichero implements IdentificableDescargable<Integer> {
+public class Fichero implements IdentificableDescargable<Integer, Fichero> {
 
 	private Integer id;
 	private double tamano;
-	private String nombreArchivo;
-	private Multimedia contenido;
+	private String nombreArchivo;		//incluye la ruta
+	private ContenidoMultimedia contenido;
 	
-	public Fichero(int id, double tamano, String nombreArchivo, Multimedia contenido) {
+	public Fichero(int id, double tamano, String nombreArchivo, ContenidoMultimedia contenido) {
 		super();
 		setId(id);
 		setTamano(tamano);
@@ -27,29 +27,34 @@ public class Fichero implements IdentificableDescargable<Integer> {
 		return nombreArchivo;
 	}
 
-	public void setNombreArchivo(String nombreArchivo) {
+	private void setNombreArchivo(String nombreArchivo) {
 		this.nombreArchivo = nombreArchivo;
 	}
 
-	public void setId(int id) {
+	private void setId(int id) {
 		this.id = id;
 	}
 
-	public void setTamano(double tamano) {
+	private void setTamano(double tamano) {
 		this.tamano = tamano;
 	}
 	
-	public Multimedia getContenido() {
+	public ContenidoMultimedia getContenido() {
 		return contenido;
 	}
 	
-	public void setContenido(Multimedia contenido) {
-		this.contenido = contenido;
+	private void setContenido(ContenidoMultimedia contenido) {
+		this.contenido =  contenido;
 	}
-	
+
 	@Override
 	public String toString() {
 		String texto = id + " - " + tamano + " b";
 		return texto;
+	}
+
+	@Override
+	public int compareTo(Fichero arg0) {
+		return getId().compareTo(arg0.getId());
 	}
 }

@@ -2,15 +2,15 @@ package descargas2y3;
 
 import java.util.Collection;
 
-final public class Cancion extends Multimedia{
+final public class Cancion extends ContenidoMultimedia{
 	
-	Collection<Cantante> artitas;
+	Collection<Cantante> artistas;
 	String titulo;
 	Album album;
 	
-	public Cancion(Collection<Cantante> artitas, String titulo, Album album) {
+	public Cancion(Collection<Cantante> artistas, String titulo, Album album) {
 		super();
-		this.artitas = artitas;
+		this.artistas = artistas;
 		this.titulo = titulo;
 		this.album =  album;
 		id = titulo;
@@ -18,10 +18,10 @@ final public class Cancion extends Multimedia{
 	}
 	
 	public Collection<Cantante> getArtitas() {
-		return artitas;
+		return artistas;
 	}
 	public void setArtitas(Collection<Cantante> artitas) {
-		this.artitas = artitas;
+		this.artistas = artitas;
 	}
 
 	public String getTitulo() {
