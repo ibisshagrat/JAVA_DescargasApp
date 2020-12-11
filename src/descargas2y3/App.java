@@ -16,7 +16,7 @@ public class App {
 		actores.add(new Actor("Silvestre"));
 		Collection<Director> directores = new ArrayList<>();
 		directores.add(new Director("Cameroon"));
-		ContenidoMultimedia StarWars = new Pelicula(directores, "Star Wars I", null, actores);
+		ContenidoDigital StarWars = new Pelicula(directores, "Star Wars I", null, actores);
 		listaDescargas.add(new Fichero(1, 3500, "01x22Peli1", StarWars));
 		
 		//Pelicula 2
@@ -25,16 +25,16 @@ public class App {
 		actores2.add(new Actor("Niña bonita A"));
 		Collection<Director> directores2 = new ArrayList<>();
 		directores2.add(new Director("Paco Dias"));
-		ContenidoMultimedia JavaLV = new Pelicula(directores2, "Java, la venganza", null, actores2);
+		ContenidoDigital JavaLV = new Pelicula(directores2, "Java, la venganza", null, actores2);
 		listaDescargas.add(new Fichero(2, 3500, "01x23Peli2", JavaLV));
 		
 		//Musica 3 y 4 - Canciones
 		Cantante robe = new Cantante("Roberto Iniesta");
 		Collection<Cantante> extremoduro = new ArrayList<>();
 		extremoduro.add(robe);
-		ContenidoMultimedia agila = new Album("Agila");
-		ContenidoMultimedia tomas = new Cancion(extremoduro, "Tomás", (Album) agila);
-		ContenidoMultimedia buscandoLuna = new Cancion(extremoduro, "Buscando una luna",(Album) agila);
+		ContenidoDigital agila = new Album("Agila");
+		ContenidoDigital tomas = new Cancion(extremoduro, "Tomás", (Album) agila);
+		ContenidoDigital buscandoLuna = new Cancion(extremoduro, "Buscando una luna",(Album) agila);
 		listaDescargas.add(new Fichero(3, 150, "01x23Cancion1", tomas));
 		listaDescargas.add(new Fichero(4, 150, "01x24Cancion2", buscandoLuna));
 		

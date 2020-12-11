@@ -11,7 +11,7 @@ public class Utils {
 		String mensaje = "";
 		double tamanoTotal = calcularTamanoTotal(listaDescargas);
 		ordenarIdentificable(listaDescargas);
-		for (Identificable<?, ?> c : listaDescargas) {
+		for (Identificable<?> c : listaDescargas) {
 			mensaje += c.getId() + "\n";
 		}
 		mensaje += "Tamano total: " + tamanoTotal + "\n";
@@ -19,7 +19,7 @@ public class Utils {
 		return mensaje;	
 	}
 	
-	public static double calcularTamanoTotal(Collection<Fichero> listaDescargas){
+	public static double calcularTamanoTotal(Collection<? extends Descargable> listaDescargas){
 		double resultado = 0;
 		for (Descargable s : listaDescargas) {
 			resultado += s.getTamano();
@@ -27,20 +27,15 @@ public class Utils {
 		return resultado;
 	}
 	
-	public static double calcularTiempoDescarga(Collection<Fichero> listaDescargas, Conexion conexion) {
+	public static double calcularTiempoDescarga(Collection<? extends Descargable> listaDescargas, Conexion conexion) {
 		return calcularTamanoTotal(listaDescargas)/conexion.getVelocidad();
 		
 	}
 	
 	public static void ordenarIdentificable(List<Fichero> listaDescargas) {
-		
-		
 		Collections.sort(listaDescargas);
-		
 		Comparator<Descargable> compararTamano = (Descargable d1, Descargable d2) -> ((Double) d1.getTamano()).compareTo((Double) d2.getTamano());
-						
 		Collections.sort(listaDescargas, compararTamano);
-
 	}
 	
 	public static String formatearTiempo(double segundos) {

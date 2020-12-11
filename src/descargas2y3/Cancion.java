@@ -2,7 +2,7 @@ package descargas2y3;
 
 import java.util.Collection;
 
-final public class Cancion extends ContenidoMultimedia{
+final public class Cancion extends ContenidoDigital{
 	
 	Collection<Cantante> artistas;
 	String titulo;

@@ -5,9 +5,7 @@ public abstract class NombrableImpl implements Nombrable {
 	 	protected String nombre;
 
 		public NombrableImpl(String nombre) {
-			super();
 			this.nombre = nombre;
-		
 		}
 	 		 	
 	 	public String getNombre() {
@@ -22,7 +20,7 @@ public abstract class NombrableImpl implements Nombrable {
 			return nombre;
 		}
 		
-		public int compareTo(Nombrable persona) {
-			return nombre.compareTo(persona.getNombre());
-		}
+//		public int compareTo(Nombrable persona) {
+//			return nombre.compareTo(persona.getNombre());
+//		}
 }

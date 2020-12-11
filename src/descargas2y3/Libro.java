@@ -1,6 +1,6 @@
 package descargas2y3;
 
-final public class Libro extends ContenidoMultimedia/* implements IdentificableDescargable<String, Libro>, */ implements Book {
+final public class Libro extends ContenidoDigital/* implements IdentificableDescargable<String, Libro>, */ implements Book {
 	private String id;
 	private String titulo;
 	private double tamano;

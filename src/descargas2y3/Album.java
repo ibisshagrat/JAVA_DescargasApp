@@ -3,7 +3,7 @@ package descargas2y3;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 
-final public class Album extends ContenidoMultimedia {
+final public class Album extends ContenidoDigital {
 
 	Collection<Cancion> canciones;
 	Collection<Cantante> artistas;

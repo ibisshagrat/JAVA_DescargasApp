@@ -2,7 +2,7 @@ package descargas2y3;
 
 import java.util.Collection;
 
-public class Pelicula extends ContenidoMultimedia{
+public class Pelicula extends ContenidoDigital{
 
 	Collection<Director> directores;
 	String titulo;
