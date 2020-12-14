@@ -1,6 +1,6 @@
 package descargas2y3;
 
-public interface Identificable<T extends Comparable<T>>{
+public interface Identificable<T extends Comparable<T>> extends Comparable<Identificable<T>>{
 
 	public T getId();
 	

@@ -6,15 +6,20 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Utils {
+	
+	public static final String LINEA = "------------------";
 
-	public static String construirInforme(List<Fichero> listaDescargas, Conexion conexion) {
+	public static <T extends Comparable<T>> String construirInforme(List<Fichero> listaDescargas, Conexion conexion) {
 		String mensaje = "";
 		double tamanoTotal = calcularTamanoTotal(listaDescargas);
-		ordenarIdentificable(listaDescargas);
-		for (Identificable<?> c : listaDescargas) {
-			mensaje += c.getId() + "\n";
+		ordenarIdentificable(listaDescargas,2);
+		int contador = 0;
+		for (Fichero c : listaDescargas) {
+			contador++;
+			mensaje += contador + "# " + ((c.isPremium())? "*":"") + c.getId() + "\n";
 		}
-		mensaje += "Tamano total: " + tamanoTotal + "\n";
+		mensaje += LINEA + "\n";
+		mensaje += "Tamano total: " + tamanoTotal + " MB \n";
 		mensaje += "El tiempo de descarga estimado es: " + formatearTiempo(tamanoTotal);
 		return mensaje;	
 	}
@@ -33,9 +38,25 @@ public class Utils {
 	}
 	
 	public static void ordenarIdentificable(List<Fichero> listaDescargas) {
-		Collections.sort(listaDescargas);
-		Comparator<Descargable> compararTamano = (Descargable d1, Descargable d2) -> ((Double) d1.getTamano()).compareTo((Double) d2.getTamano());
-		Collections.sort(listaDescargas, compararTamano);
+		
+		ordenarIdentificable(listaDescargas, 0);
+	}
+	//criterio ordenacion: 0 -> id, 1 -> tamaño,2->fecha
+	public static void ordenarIdentificable(List<Fichero> listaDescargas, int criterio) {
+		
+		if (criterio == 0) {
+			Collections.sort(listaDescargas);
+		} else {
+			if (criterio == 1) {
+				Comparator<Descargable> ordenacion = (Descargable d1, Descargable d2) -> ((Double) d1.getTamano()).compareTo((Double) d2.getTamano());
+				Collections.sort(listaDescargas, ordenacion);
+
+			} else if (criterio == 2) {
+				Comparator<Fichero> ordenacion = (Fichero d1, Fichero d2) -> (d1.getFechaPublicacion()).compareTo(d2.getFechaPublicacion());
+				Collections.sort(listaDescargas, ordenacion);
+
+			}
+		}
 	}
 	
 	public static String formatearTiempo(double segundos) {

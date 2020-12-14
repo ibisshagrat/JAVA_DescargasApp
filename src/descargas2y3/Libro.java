@@ -1,17 +1,20 @@
 package descargas2y3;
 
-final public class Libro extends ContenidoDigital/* implements IdentificableDescargable<String, Libro>, */ implements Book {
+import java.time.LocalDate;
+
+final public class Libro extends ContenidoDigital implements Book {
 	private String id;
 	private String titulo;
 	private double tamano;
 	
 	
 	
-	public Libro(String id, String titulo, double tamano) {
+	public Libro(String id, String titulo, double tamano, LocalDate fecha) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.tamano = tamano;
+		fechaPublicacion = fecha;
 	}
 
 	public String getId() {

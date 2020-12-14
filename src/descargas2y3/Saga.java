@@ -1,5 +1,6 @@
 package descargas2y3;
 
+import java.time.LocalDate;
 import java.util.Collection;
 
 final public class Saga extends ContenidoDigital {
@@ -7,10 +8,10 @@ final public class Saga extends ContenidoDigital {
 	String tituloSaga;
 	Collection<Pelicula> peliculas;
 
-	public Saga(String tituloSaga) {
-		super();
+	public Saga(String tituloSaga, LocalDate fecha) {
 		this.tituloSaga = tituloSaga;
 		id = tituloSaga;
+		fechaPublicacion = fecha;
 
 	}
 

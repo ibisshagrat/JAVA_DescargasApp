@@ -1,11 +1,14 @@
 package descargas2y3;
 
-public class Fichero implements IdentificableDescargable<Integer>, Comparable<Fichero>{
+import java.time.LocalDate;
+
+public class Fichero implements Identificable<Integer>, Descargable{
 
 	private Integer id;
 	private double tamano;
 	private String nombreArchivo;		//incluye la ruta
 	private ContenidoDigital contenido;
+	private boolean premium = true;
 	
 	public Fichero(int id, double tamano, String nombreArchivo, ContenidoDigital contenido) {
 		super();
@@ -15,6 +18,14 @@ public class Fichero implements IdentificableDescargable<Integer>, Comparable<Fi
 		setContenido(contenido);
 	}
 
+	public boolean isPremium() {
+		return premium;
+	}
+	
+	public void setPremium(boolean premium) {
+		this.premium = premium;
+	}
+	
 	public double getTamano() {
 		return tamano;
 	}
@@ -47,14 +58,14 @@ public class Fichero implements IdentificableDescargable<Integer>, Comparable<Fi
 		this.contenido =  contenido;
 	}
 
+	public LocalDate getFechaPublicacion() {
+		return contenido.getFechaPublicacion();
+	}
+	
 	@Override
 	public String toString() {
 		String texto = id + " - " + tamano + " b";
 		return texto;
 	}
 
-	@Override
-	public int compareTo(Fichero arg0) {
-		return getId().compareTo(arg0.getId());
-	}
 }
