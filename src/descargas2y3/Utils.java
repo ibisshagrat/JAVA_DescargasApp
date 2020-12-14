@@ -9,12 +9,12 @@ public class Utils {
 	
 	public static final String LINEA = "------------------";
 
-	public static <T extends Comparable<T>> String construirInforme(List<Fichero> listaDescargas, Conexion conexion) {
+	public static <T extends Identificable<Integer> & Descargable> String construirInforme(List<T> listaDescargas, Conexion conexion) {
 		String mensaje = "";
 		double tamanoTotal = calcularTamanoTotal(listaDescargas);
 		ordenarIdentificable(listaDescargas,2);
 		int contador = 0;
-		for (Fichero c : listaDescargas) {
+		for (T c : listaDescargas) {
 			contador++;
 			mensaje += contador + "# " + ((c.isPremium())? "*":"") + c.getId() + "\n";
 		}
@@ -42,7 +42,7 @@ public class Utils {
 		ordenarIdentificable(listaDescargas, 0);
 	}
 	//criterio ordenacion: 0 -> id, 1 -> tamaño,2->fecha
-	public static void ordenarIdentificable(List<Fichero> listaDescargas, int criterio) {
+	public static <T extends Identificable<Integer> & Descargable> void ordenarIdentificable(List<T> listaDescargas, int criterio) {
 		
 		if (criterio == 0) {
 			Collections.sort(listaDescargas);
@@ -52,7 +52,7 @@ public class Utils {
 				Collections.sort(listaDescargas, ordenacion);
 
 			} else if (criterio == 2) {
-				Comparator<Fichero> ordenacion = (Fichero d1, Fichero d2) -> (d1.getFechaPublicacion()).compareTo(d2.getFechaPublicacion());
+				Comparator<T> ordenacion = (T d1, T d2) -> (d1.getFechaPublicacion()).compareTo(d2.getFechaPublicacion());
 				Collections.sort(listaDescargas, ordenacion);
 
 			}
