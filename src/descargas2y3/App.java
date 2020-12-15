@@ -11,7 +11,6 @@ public class App {
 	public static void main(String[] args) {
 		
 		List<Fichero> listaDescargas = new ArrayList<>();
-
 		
 		//Pelicula 1
 		Collection<Actor> actores = new ArrayList<Actor>();
@@ -24,7 +23,6 @@ public class App {
 		for (Fichero fichero : listaDescargas) {
 			fichero.setPremium(false);
 		}
-		
 		
 		//Pelicula 2
 		Collection<Actor> actores2 = new ArrayList<Actor>();
@@ -52,7 +50,7 @@ public class App {
 		listaDescargas.add(new Fichero(8, 15000, "01x23Peli2", new Saga("El senor del los Ladrillos", LocalDate.of(1927, 5, 27))));
 		
 		//Conexion
-		ConexionRed conexion = new ConexionRed();
+		Conexion conexion = () -> 50d;
 		
 		System.out.println(Utils.construirInforme(listaDescargas, conexion));
 	}
