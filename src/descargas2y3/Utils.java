@@ -1,15 +1,18 @@
 package descargas2y3;
 
+import java.text.NumberFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import javax.swing.text.NumberFormatter;
+
 public class Utils {
 	
 	public static final String LINEA = "------------------";
 
-	public static <T extends Identificable<Integer> & Descargable> String construirInforme(List<T> listaDescargas, Conexion conexion) {
+	public static <T extends Identificable<Integer> & Descargable> String construirInforme(List<T> listaDescargas) {
 		String mensaje = "";
 		double tamanoTotal = calcularTamanoTotal(listaDescargas);
 		ordenarIdentificable(listaDescargas,2);
@@ -19,8 +22,9 @@ public class Utils {
 			mensaje += contador + "# " + ((c.isPremium())? "*":"") + c.getId() + "\n";
 		}
 		mensaje += LINEA + "\n";
-		mensaje += "Tamano total: " + tamanoTotal + " MB \n";
-		mensaje += "El tiempo de descarga estimado es: " + formatearTiempo(tamanoTotal);
+//		mensaje += "Tamano total: " + String.format("%.2f", tamanoTotal) + " MB \n";
+		mensaje += "Tamano total: " + NumberFormat.getNumberInstance().format(tamanoTotal) + " MB \n";
+		mensaje += "El tiempo de descarga estimado es: " + formatearTiempo(calcularTiempoDescarga(listaDescargas, () -> 50d));
 		return mensaje;	
 	}
 	
@@ -32,7 +36,7 @@ public class Utils {
 		return resultado;
 	}
 	
-	public static double calcularTiempoDescarga(Collection<? extends Descargable> listaDescargas, Conexion conexion) {
+	private static double calcularTiempoDescarga(Collection<? extends Descargable> listaDescargas, Conexion conexion) {
 		return calcularTamanoTotal(listaDescargas)/conexion.getVelocidad();
 		
 	}
@@ -41,7 +45,7 @@ public class Utils {
 		
 		ordenarIdentificable(listaDescargas, 0);
 	}
-	//criterio ordenacion: 0 -> id, 1 -> tamaño,2->fecha
+	//criterio ordenacion: 0 -> id, 1 -> tamano,2->fecha
 	public static <T extends Identificable<Integer> & Descargable> void ordenarIdentificable(List<T> listaDescargas, int criterio) {
 		
 		if (criterio == 0) {
@@ -69,9 +73,13 @@ public class Utils {
 			if (minutos >= 60) {		//Se observa si hay horas
 				horas = minutos/60;
 				minutos += -horas*60;
+				mensajeSalida = horas + ":" + minutos + ":" + (int) segundos;
+			} else {
+				mensajeSalida ="" + minutos + ":" + (int) segundos;
 			}
+		} else {
+			mensajeSalida = "" + (int) segundos;
 		}
-		mensajeSalida = horas + ":" + minutos + ":" + segundos;
 		return mensajeSalida;
 	}
 	

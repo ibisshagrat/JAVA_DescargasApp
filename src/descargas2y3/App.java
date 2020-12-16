@@ -13,34 +13,27 @@ public class App {
 		List<Fichero> listaDescargas = new ArrayList<>();
 		
 		//Pelicula 1
-		Collection<Actor> actores = new ArrayList<Actor>();
-		actores.add(new Actor("Chuacheneger"));
-		actores.add(new Actor("Silvestre"));
 		Collection<Director> directores = new ArrayList<>();
 		directores.add(new Director("Cameroon"));
-		ContenidoDigital StarWars = new Pelicula(directores, "Star Wars I", null, actores, LocalDate.of(1989, 10, 20));
+		ContenidoDigital StarWars = new Pelicula(directores, "Star Wars I", null, LocalDate.of(1989, 10, 20), new Actor("Chuacheneger"), new Actor("Silvestre"));
 		listaDescargas.add(new Fichero(1, 3500, "01x22Peli1", StarWars));
 		for (Fichero fichero : listaDescargas) {
 			fichero.setPremium(false);
 		}
 		
 		//Pelicula 2
-		Collection<Actor> actores2 = new ArrayList<Actor>();
-		actores2.add(new Actor("El Bola"));
-		actores2.add(new Actor("Niña bonita A"));
 		Collection<Director> directores2 = new ArrayList<>();
 		directores2.add(new Director("Paco Dias"));
-		ContenidoDigital JavaLV = new Pelicula(directores2, "Java, la venganza", null, actores2, LocalDate.of(1993, 12, 2));
+		ContenidoDigital JavaLV = new Pelicula(directores2, "Java, la venganza", null, LocalDate.of(1993, 12, 2), new Actor("El Bola"), new Actor("Niña bonita A"));
 		listaDescargas.add(new Fichero(2, 3500, "01x23Peli2", JavaLV));
 		
 		//Musica 3 y 4 - Canciones
-		Cantante robe = new Cantante("Roberto Iniesta");
-		Collection<Cantante> extremoduro = new ArrayList<>();
-		extremoduro.add(robe);
+		Cantante extremoduro = new Cantante("Roberto Iniesta");
+		Cantante fito = new Cantante("Fito");
 		ContenidoDigital agila = new Album("Agila");
-		ContenidoDigital tomas = new Cancion(extremoduro, "Tomas", (Album) agila, LocalDate.of(1991, 1, 2));
-		ContenidoDigital buscandoLuna = new Cancion(extremoduro, "Buscando una luna",(Album) agila, LocalDate.of(1991, 1, 2));
-		listaDescargas.add(new Fichero(3, 150, "01x23Cancion1", tomas));
+		ContenidoDigital tomas = new Cancion("Tomas", (Album) agila, LocalDate.of(1991, 1, 2), extremoduro);
+		ContenidoDigital buscandoLuna = new Cancion("Buscando una luna",(Album) agila, LocalDate.of(1991, 1, 2), extremoduro, fito);
+		listaDescargas.add(new Fichero(3, 150.5, "01x23Cancion1", tomas));
 		listaDescargas.add(new Fichero(4, 150, "01x24Cancion2", buscandoLuna));
 		
 		//Libro 5
@@ -50,8 +43,7 @@ public class App {
 		listaDescargas.add(new Fichero(8, 15000, "01x23Peli2", new Saga("El senor del los Ladrillos", LocalDate.of(1927, 5, 27))));
 		
 		//Conexion
-		Conexion conexion = () -> 50d;
 		
-		System.out.println(Utils.construirInforme(listaDescargas, conexion));
+		System.out.println(Utils.construirInforme(listaDescargas));
 	}
 }

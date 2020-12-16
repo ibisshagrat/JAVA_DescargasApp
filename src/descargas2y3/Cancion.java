@@ -1,6 +1,7 @@
 package descargas2y3;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Collection;
 
 final public class Cancion extends ContenidoDigital{
@@ -9,9 +10,9 @@ final public class Cancion extends ContenidoDigital{
 	String titulo;
 	Album album;
 	
-	public Cancion(Collection<Cantante> artistas, String titulo, Album album, LocalDate fecha) {
+	public Cancion(String titulo, Album album, LocalDate fecha, Cantante...cantantes) {
 		super();
-		this.artistas = artistas;
+		this.artistas = Arrays.asList(cantantes);
 		this.titulo = titulo;
 		this.album =  album;
 		id = titulo;

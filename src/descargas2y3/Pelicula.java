@@ -1,6 +1,7 @@
 package descargas2y3;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Collection;
 
 public class Pelicula extends ContenidoDigital{
@@ -10,12 +11,12 @@ public class Pelicula extends ContenidoDigital{
 	Collection<Saga> saga;			//Puede pertenecer a varias sagas
 	Collection<Actor> actores; 
 	
-	public Pelicula(Collection<Director> director, String titulo, Collection<Saga> saga, Collection<Actor> actores, LocalDate fecha ) {
+	public Pelicula(Collection<Director> director, String titulo, Collection<Saga> saga, LocalDate fecha, Actor...actores) {
 		super();
 		this.directores = director;
 		this.titulo = titulo;
 		this.saga = saga;
-		this.actores = actores;
+		this.actores = Arrays.asList(actores);
 		id = titulo;
 		fechaPublicacion = fecha;
 		
